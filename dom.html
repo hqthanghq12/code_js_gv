@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Object Properties in HTML Table</title>
+</head>
+<body>
+    <button onclick="add({ name: 'John', age: 30, occupation:'Engineer' })">Thêm</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Occupation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table body will be populated using JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        var people = [
+            { name: "John", age: 30, occupation: "Engineer" },
+            { name: "Jane", age: 25, occupation: "Designer" },
+            { name: "Mike", age: 40, occupation: "Manager" }
+        ];
+        function add(pp) {
+            people.push(pp);
+            load()
+        }
+        load();
+        // var tableBody = ;
+        function load() { 
+            var dataPepple = "";
+
+            var index = 1;
+            for (pp of people) {
+                console.log(pp);
+                dataPepple += "<tr onclick='doiMau("+index+")'><td>"+pp.name+"</td><td>"+pp.age+"</td><td>"+pp.occupation+"</td></tr>";
+                index++
+            }
+            console.log(dataPepple);
+            document.getElementsByTagName("tbody")[0].innerHTML = dataPepple;
+        }
+        
+        function doiMau(index){
+               document.getElementsByTagName('tr')[index].style.color = "red";
+         }
+        
+
+    </script>
+</body>
+</html>
